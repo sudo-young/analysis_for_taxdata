@@ -64,7 +64,7 @@
 | 자동화 시연 | ![RPA Demo](images/rpa_gif.gif) |
 
 ---
-
+<!--
 ## 🚀 실행 방법
 
 ```bash
@@ -73,9 +73,11 @@ cd [레포이름]
 # 각 폴더별 README.md 참고
 ```
 
+- 💼 LinkedIn: [https://linkedin.com/in/your-name]
+--!>
 ---
 
 ## 📮 문의
 
-- 📧 Contact: [your-email@example.com]
-- 💼 LinkedIn: [https://linkedin.com/in/your-name]
+- 📧 Contact: [corporatetax.sy@gmail.com]
+
