@@ -1,12 +1,13 @@
 import streamlit as st
-from tax_laws timport TAX_LAWS
+from tax_laws import TAX_LAWS
+from tax_income import calculate_taxable_income, calculate_income_tax
 
 st.set_page_config(page_title="Search Tax and the calculator",layout="centered")
 
 st.title("Search Tax & the calculator")
 
 
-# --- Searching tax law ---
+# --- 세법 검색 ---
 st.header("search tax")
 keyword =st.text_input("Type your keywords (e.g. 간주임대료, 의제매입세액공제 등)")
 if keyword:
@@ -26,5 +27,47 @@ rate 0.031 #2025년 기준 이자율
 if deposit>0 and days>0:
   income = deposit * rate * (days/365)
   st.info(f"간주임대료: {income:,.0f} 원")
+
+
+
+# --- 종합소득세 과세표준  & 세액 계산기 --
+st.header("종합소득세 과세표준 계산기")
+
+# input
+total_income = st.number_input("총수입금액(원)",step=1000000,format="%d")
+expenses = st.number_input("필요경비(원)",step=1000000,format="%d")
+dependents = st.number_input("부양가족 수(본인제외)",min_value=0,step=1)
+
+# calculate
+if total_income>0 and :
+  income_account = total_income - expenses
+  basic_deduction = 1500000 #기본공제
+  personal_deduction = 1500000(1 + dependents) # 본인 + 가족당 150만원
+  taxable_base = income_amount - personal_deduction
+
+  st.write(f"소득금액: {income_amount:,.0f}원")
+  st.write(f"소득공제 합계: {personal_deduction:,.0f}원")
+  st.success(f"과세표준: {max(taxable_base,0):,.0f}원")
+
+if income > 0:
+  tax = calculate_income_tax(income)
+  st.success(F"예상세약:{tax:,.0f} 원")
   
           
+#세액 계산 연동
+tax = calculate_income_tax(max(taxable_base,0))
+st.info(f"예상 종합소득세:{tax:,.0f}원. 이 계산 결과는 참조일뿐 법적인 공식적 효력은 가지지 않습니다. ")
+  
+
+
+
+
+
+
+
+
+# --- Calculator for 종소세 ---
+st.header("종합소득세 계산기 (간이버전)")
+
+income = st.number_input("과세표준 소득(원)",step=1000000,format="%d")
+
