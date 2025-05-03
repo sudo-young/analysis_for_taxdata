@@ -1,15 +1,15 @@
 ## HOW TO EXECUTE THIS CODE
 
-# $bash
+$bash
 ''
-# generate a virtual environment (optional)
+### generate a virtual environment (optional)
 python -m venv venv
 source venv/bin/activate  # `venv\Scripts\activate` in case of windows
 
-#install some libs
+### install some libs
 pip install -r requirements.txt
 
-#execution
+###execution
 streamlit run app.py
 
 ''
