@@ -38,36 +38,24 @@ total_income = st.number_input("총수입금액(원)",step=1000000,format="%d")
 expenses = st.number_input("필요경비(원)",step=1000000,format="%d")
 dependents = st.number_input("부양가족 수(본인제외)",min_value=0,step=1)
 
-# calculate
-if total_income>0 and :
-  income_account = total_income - expenses
-  basic_deduction = 1500000 #기본공제
-  personal_deduction = 1500000(1 + dependents) # 본인 + 가족당 150만원
-  taxable_base = income_amount - personal_deduction
+# income_account = total_income - expenses
+# basic_deduction = 1500000 #기본공제
+# personal_deduction = 1500000(1 + dependents) # 본인 + 가족당 150만원
+# taxable_base = income_amount - personal_deduction
 
+
+# calculate
+if total_income>0 and expenses >= 0:
+  taxable_base, income_amount, total_deduction = calculate_taxable_income(total_income, expenses, dependents)
+  tax = calculate_income_tax(taxable_base)
+
+  st.subheader("결과")
   st.write(f"소득금액: {income_amount:,.0f}원")
   st.write(f"소득공제 합계: {personal_deduction:,.0f}원")
-  st.success(f"과세표준: {max(taxable_base,0):,.0f}원")
-
-if income > 0:
-  tax = calculate_income_tax(income)
-  st.success(F"예상세약:{tax:,.0f} 원")
-  
-          
-#세액 계산 연동
-tax = calculate_income_tax(max(taxable_base,0))
-st.info(f"예상 종합소득세:{tax:,.0f}원. 이 계산 결과는 참조일뿐 법적인 공식적 효력은 가지지 않습니다. ")
+  st.write(f"과세표준: {max(taxable_base,0):,.0f}원")
+  st.success(F"예상종합소득세:{tax:,.0f} 원")
+  st.info("이 계산 결과는 단순 참조용일뿐 법적인 공식적 효력은 가지지 않습니다. ")
   
 
 
-
-
-
-
-
-
-# --- Calculator for 종소세 ---
-st.header("종합소득세 계산기 (간이버전)")
-
-income = st.number_input("과세표준 소득(원)",step=1000000,format="%d")
 
